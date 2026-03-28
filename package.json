@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "preinstall": "corepack enable && corepack prepare pnpm@9.15.4 --activate || npm install -g pnpm@9.15.4",
+    "postinstall": "pnpm install --frozen-lockfile || pnpm install",
+    "start": "node --import ./server/node_modules/tsx/dist/loader.mjs server/dist/index.js",
     "dev": "node scripts/dev-runner.mjs watch",
     "dev:watch": "node scripts/dev-runner.mjs watch",
     "dev:once": "node scripts/dev-runner.mjs dev",
